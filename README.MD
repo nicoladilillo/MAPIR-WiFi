@@ -21,5 +21,43 @@ The MAPIR camera is equipped with a WiFi module that enables wireless communicat
 ### 2. Network Configuration
 The camera is configured to connect to a local WiFi network, enabling it to establish a connection with the controlling device.
 
+```bash
+nmcli device wifi connect "MAPIR-S3WRGN-dbcbdc" password "12345678"
+```
+
 ### 3. User Interface Development
 A user-friendly mobile app or web interface
+
+## Steps
+
+1. Take MAPIR in Photo Mode:
+
+```bash
+curl "http://192.168.1.254/?custom=1&cmd=1003"
+```
+
+2. Take photo:
+
+```bash
+http://192.168.1.254/?custom=1&cmd=1001
+```
+
+from the answer save the name of the photo using the following file format.
+
+```
+<?xml version="1.0" encoding="UTF-8" ?>
+<Function>
+<Cmd>1001</Cmd>
+<Status>0</Status>
+<File>
+<NAME>2024_1118_160550_012.JPG</NAME>
+<FPATH>A:\DCIM\Photo\2024_1118_160550_012.JPG</FPATH></File>
+<FREEPICNUM>34174</FREEPICNUM>
+</Function>
+```
+
+## Required package
+
+```bash
+pip install requests beautifulsoup4
+```

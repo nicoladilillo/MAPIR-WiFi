@@ -1,0 +1,1 @@
+curl "http://192.168.1.254/?custom=1&cmd=4004" > /dev/null 2>&1
