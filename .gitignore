@@ -1,3 +1,8 @@
+Photos/*
+
 *.xml
 *.RAW
 *.JPG
+
+MAPIRS.txt
+mapirs.log

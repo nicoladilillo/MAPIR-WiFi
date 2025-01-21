@@ -61,3 +61,13 @@ from the answer save the name of the photo using the following file format.
 ```bash
 pip install requests beautifulsoup4
 ```
+
+## Streaming
+
+Before run this.
+
+```
+http://192.168.1.254/?custom=1&cmd=3001&par=0
+```
+
+http://192.168.1.254:8192

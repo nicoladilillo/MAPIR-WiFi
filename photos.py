@@ -2,6 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import os
 import xml.etree.ElementTree as ET
+import time
 
 # Define the file path and base URL
 html_file = "output.xml"
@@ -77,6 +78,12 @@ response_analysis(url, "Camera set to PHOTO mode")
 url = f"{base_url}/?custom=1&cmd=1001"
 response_analysis(url, "Photo taken")
 
+time.sleep(0.2)
+
+# Stop taking the PHOTO
+url = f"{base_url}/?custom=1&cmd=1001"
+response_analysis(url, "Photo taken")
+
 ############################################################################################################
 
 # Save list of photos
@@ -103,7 +110,8 @@ for link in links:
     if DCIM_FOLDER in file_path and not file_path.endswith("del=1"): 
         # Construct the full URL
         url = f"{base_url}{file_path}"
-        filename = file_path.split("/")[-1]  # Extract the file name
+        # Extract the file name
+        filename = file_path.split("/")[-1].replace("?del=1","")
 
         # Download the file
         print(f"Downloading {filename} ... ",end="")
@@ -126,7 +134,7 @@ for link in links:
         # Construct the full URL
         url = f"{base_url}{file_path}"
         # Extract the file name
-        filename = file_path.split("/")[-1][:-6] 
+        filename = file_path.split("/")[-1].replace("?del=1","")
 
         # Download the file
         print(f"Delete {filename} ... ",end="")
